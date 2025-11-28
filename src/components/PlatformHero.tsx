@@ -23,7 +23,12 @@ const stats = [
 
 const PlatformHero = () => {
   return (
-	<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+	<section
+	  className="
+		relative min-h-screen flex items-center justify-center overflow-hidden
+		pt-24 sm:pt-28 lg:pt-32
+	  "
+	>
 	  {/* === BACKGROUND LAYERS === */}
 	  <div className="absolute inset-0 z-0">
 		{/* Базовый градиент-фон */}
@@ -84,7 +89,7 @@ const PlatformHero = () => {
 			</p>
 		  </div>
 
-		  {/* Чипы — одинаковый стиль */}
+		  {/* Чипы */}
 		  <div className="flex flex-wrap justify-center gap-3 text-xs sm:text-sm">
 			<span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-4 py-1 text-foreground/90 transition-transform duration-200 hover:-translate-y-0.5">
 			  <Gauge className="h-4 w-4 text-primary" />
@@ -100,7 +105,7 @@ const PlatformHero = () => {
 			</span>
 		  </div>
 
-		  {/* Кнопки — центр */}
+		  {/* Кнопки */}
 		  <div className="flex flex-col sm:flex-row gap-4 justify-center">
 			<Button className="rounded-full bg-primary px-8 py-3 text-sm sm:text-base font-semibold text-primary-foreground shadow-[0_0_40px_hsl(var(--primary)/0.25)] hover:bg-primary/90 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] transition-all duration-300">
 			  Get started
@@ -114,20 +119,16 @@ const PlatformHero = () => {
 			</Button>
 		  </div>
 
-		  {/* Лёгкий текст снизу */}
 		  <p className="text-xs sm:text-sm text-muted-foreground/80 max-w-md mx-auto">
 			Built for high-load casino, sportsbook and crypto operations with
 			security, observability and modularity baked in.
 		  </p>
 
-		  {/* Статы с hover-анимацией */}
 		  <div className="grid gap-4 sm:grid-cols-3 pt-4">
 			{stats.map((stat) => (
 			  <div
 				key={stat.label}
-				className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 backdrop-blur-md
-						   transition-all duration-300 hover:-translate-y-1 hover:border-primary/60
-						   hover:bg-black/40 hover:shadow-[0_18px_45px_rgba(0,0,0,0.7)]"
+				className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:bg-black/40 hover:shadow-[0_18px_45px_rgba(0,0,0,0.7)]"
 			  >
 				<div className="text-lg sm:text-xl font-semibold text-primary leading-none">
 				  {stat.value}
