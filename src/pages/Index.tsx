@@ -10,6 +10,7 @@ import DesignPrinciples from "@/components/DesignPrinciples";
 import SecurityHighlights from "@/components/SecurityHighlights";
 import PartnersSection from "@/components/PartnersSection";
 import Footer from "@/components/Footer";
+import TrustSection from "@/components/TrustSection";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <Services />
       <SecurityCrypto />
       <Capabilities />
+      <TrustSection />
       < PartnersSection /> 
       <FAQ />
       <CTA />
