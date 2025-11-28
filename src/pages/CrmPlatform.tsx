@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import CRMSecuritySection from "@/components/CRMSecuritySection";
 import heroBg from "@/assets/bg4.png";
-import crmWorkspaceMock from "@/assets/CRMMac.png"; // путь подставь свой
+import crmWorkspaceMock from "@/assets/CRMMAC.png"; 
 import {
   ArrowRight,
   Users,
