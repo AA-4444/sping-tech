@@ -100,7 +100,7 @@ const AboutPage = () => {
 				  <span className="text-primary"> for casino infrastructure</span>
 				</h2>
 				<p className="text-sm sm:text-base text-muted-foreground max-w-xl">
-				  Aereus is not another generic dev shop. We work only on
+				  Sping.tech is not another generic dev shop. We work only on
 				  iGaming and adjacent fintech — where uptime, compliance and
 				  player experience sit on the same level.
 				</p>
