@@ -90,72 +90,109 @@ const AboutPage = () => {
 		  </div>
 		</section>
 
-		{/* WHAT WE DO */}
-		<section className="py-16 sm:py-20 lg:py-24 border-t border-border/60 bg-secondary/5">
-		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
-			  <div className="space-y-4">
-				<h2 className="text-2xl sm:text-3xl font-bold">
-				  We’re a product studio
-				  <span className="text-primary"> for casino infrastructure</span>
-				</h2>
-				<p className="text-sm sm:text-base text-muted-foreground max-w-xl">
-				  Sping.tech is not another generic dev shop. We work only on
-				  iGaming and adjacent fintech — where uptime, compliance and
-				  player experience sit on the same level.
-				</p>
-				<p className="text-sm sm:text-base text-muted-foreground max-w-xl">
-				  Our platform blueprint combines modular PAM, payments, CRM,
-				  analytics and security into a stack that can be deployed as a
-				  whole or in phases, depending on where you are in your journey.
+	{/* WHAT WE DO + VALUES (shared background with lines) */}
+	<section className="relative py-16 sm:py-20 lg:py-24 bg-secondary/5 overflow-hidden">
+	  {/* ФОН: мягкий свет + линии */}
+	  <div className="pointer-events-none absolute inset-0 z-0">
+		{/* мягкие пятна */}
+		<div className="absolute -top-24 left-[-40px] w-72 h-72 rounded-full bg-primary/14 blur-3xl" />
+		<div className="absolute bottom-[-60px] right-[-40px] w-80 h-80 rounded-full bg-yellow-400/12 blur-3xl" />
+	
+		{/* абстрактные линии (слегка диагональные, волной) */}
+		<svg
+		  className="absolute inset-0 w-full h-full"
+		  viewBox="0 0 1400 1000"
+		  preserveAspectRatio="none"
+		  fill="none"
+		  stroke="currentColor"
+		  strokeWidth="1"
+		  strokeLinecap="round"
+		  style={{ color: "rgba(250,204,21,0.22)" }}
+		>
+		  {Array.from({ length: 22 }).map((_, i) => {
+			const offset = i * 36 - 280; // шаг между линиями
+	
+			return (
+			  <path
+				key={i}
+				d={`
+				  M -120 ${260 + offset}
+				  C 260 ${140 + offset},
+					540 ${260 + offset},
+					920 ${210 + offset}
+				  S 1500 ${520 + offset},
+					1520 ${880 + offset}
+				`}
+			  />
+			);
+		  })}
+		</svg>
+	  </div>
+	
+	 
+	  <div className="relative z-10">
+		<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+		  {/* WHAT WE DO */}
+		  <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
+			<div className="space-y-4">
+			  <h2 className="text-2xl sm:text-3xl font-bold">
+				We’re a product studio
+				<span className="text-primary"> for casino infrastructure</span>
+			  </h2>
+			  <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
+				Sping.tech is not another generic dev shop. We work only on
+				iGaming and adjacent fintech — where uptime, compliance and
+				player experience sit on the same level.
+			  </p>
+			  <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
+				Our platform blueprint combines modular PAM, payments, CRM,
+				analytics and security into a stack that can be deployed as a
+				whole or in phases, depending on where you are in your journey.
+			  </p>
+			</div>
+	
+			<div className="grid gap-4 sm:grid-cols-2">
+			  <div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
+				<h3 className="text-sm font-semibold mb-1 text-primary">
+				  High-load by default
+				</h3>
+				<p className="text-xs sm:text-sm text-muted-foreground">
+				  Architected around spikes: tournaments, promos, big sports
+				  events and new market launches.
 				</p>
 			  </div>
-
-			  <div className="grid gap-4 sm:grid-cols-2">
-				<div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
-				  <h3 className="text-sm font-semibold mb-1 text-primary">
-					High-load by default
-				  </h3>
-				  <p className="text-xs sm:text-sm text-muted-foreground">
-					Architected around spikes: tournaments, promos, big sports
-					events and new market launches.
-				  </p>
-				</div>
-				<div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
-				  <h3 className="text-sm font-semibold mb-1 text-primary">
-					Crypto-first, not crypto-only
-				  </h3>
-				  <p className="text-xs sm:text-sm text-muted-foreground">
-					Digital assets, stablecoins and fiat in one stack with
-					transparent reporting and risk controls.
-				  </p>
-				</div>
-				<div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
-				  <h3 className="text-sm font-semibold mb-1 text-primary">
-					Privacy & observability
-				  </h3>
-				  <p className="text-xs sm:text-sm text-muted-foreground">
-					We minimise data, but maximise insight — logs, traces and
-					metrics wired from day one.
-				  </p>
-				</div>
-				<div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
-				  <h3 className="text-sm font-semibold mb-1 text-primary">
-					Product thinking
-				  </h3>
-				  <p className="text-xs sm:text-sm text-muted-foreground">
-					We care about funnels, retention and ARPU as much as about
-					latency or infra costs.
-				  </p>
-				</div>
+			  <div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
+				<h3 className="text-sm font-semibold mb-1 text-primary">
+				  Crypto-first, not crypto-only
+				</h3>
+				<p className="text-xs sm:text-sm text-muted-foreground">
+				  Digital assets, stablecoins and fiat in one stack with
+				  transparent reporting and risk controls.
+				</p>
+			  </div>
+			  <div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
+				<h3 className="text-sm font-semibold mb-1 text-primary">
+				  Privacy & observability
+				</h3>
+				<p className="text-xs sm:text-sm text-muted-foreground">
+				  We minimise data, but maximise insight — logs, traces and
+				  metrics wired from day one.
+				</p>
+			  </div>
+			  <div className="rounded-2xl border border-border/70 bg-card/90 p-4 sm:p-5 shadow-sm">
+				<h3 className="text-sm font-semibold mb-1 text-primary">
+				  Product thinking
+				</h3>
+				<p className="text-xs sm:text-sm text-muted-foreground">
+				  We care about funnels, retention and ARPU as much as about
+				  latency or infra costs.
+				</p>
 			  </div>
 			</div>
 		  </div>
-		</section>
-
-		{/* VALUES */}
-		<section className="py-16 sm:py-20 lg:py-24">
-		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+	
+		  {/* VALUES */}
+		  <div className="mt-16 sm:mt-20 lg:mt-24">
 			<div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
 			  <div>
 				<h2 className="text-2xl sm:text-3xl font-bold mb-3">
@@ -168,7 +205,7 @@ const AboutPage = () => {
 				</p>
 			  </div>
 			</div>
-
+	
 			<div className="grid gap-5 md:grid-cols-3">
 			  <div className="group rounded-2xl border border-border/70 bg-card/90 p-5 sm:p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/70 hover:shadow-[0_0_40px_hsl(var(--primary)/0.25)]">
 				<p className="text-xs uppercase tracking-[0.2em] text-primary/80 mb-3">
@@ -182,7 +219,7 @@ const AboutPage = () => {
 				  roadmaps instead of one-off deliveries.
 				</p>
 			  </div>
-
+	
 			  <div className="group rounded-2xl border border-border/70 bg-card/90 p-5 sm:p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/70 hover:shadow-[0_0_40px_hsl(var(--primary)/0.25)]">
 				<p className="text-xs uppercase tracking-[0.2em] text-primary/80 mb-3">
 				  02
@@ -195,7 +232,7 @@ const AboutPage = () => {
 				  day one — and co-design a path that actually works.
 				</p>
 			  </div>
-
+	
 			  <div className="group rounded-2xl border border-border/70 bg-card/90 p-5 sm:p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/70 hover:shadow-[0_0_40px_hsl(var(--primary)/0.25)]">
 				<p className="text-xs uppercase tracking-[0.2em] text-primary/80 mb-3">
 				  03
@@ -210,11 +247,13 @@ const AboutPage = () => {
 			  </div>
 			</div>
 		  </div>
-		</section>
+		</div>
+	  </div>
+	</section>
 
-		{/* HOW WE WORK / LINE WITH DOTS */}
+		
 		{/* HOW WE WORK / TIMELINE */}
-		<section className="py-16 sm:py-20 lg:py-24 border-t border-border/70 bg-secondary/5">
+		<section className="py-16 sm:py-20 lg:py-24 bg-secondary/5">
 		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 			<div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
 			  {/* ЛЕВАЯ ЧАСТЬ */}

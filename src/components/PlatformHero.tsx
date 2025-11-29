@@ -26,7 +26,9 @@ const PlatformHero = () => {
 	<section
 	  className="
 		relative min-h-screen flex items-center justify-center overflow-hidden
-		pt-24 sm:pt-28 lg:pt-32
+		pt-24             
+		sm:pt-16           
+		lg:pt-0            
 	  "
 	>
 	  {/* === BACKGROUND LAYERS === */}

@@ -103,23 +103,29 @@ const CasinoSecuritySection = () => {
 
   return (
 	<section
-	  // 🔥 ключевая строка: отрицательный отступ снизу, чтобы градиент залез под футер
-	  className="relative overflow-hidden py-24 bg-gradient-to-b from-navy via-background to-background -mb-10 sm:-mb-12 lg:-mb-16"
+	  className="
+		relative overflow-hidden 
+		pt-24 pb-32
+		bg-gradient-to-b from-navy via-background to-background
+		-mb-10 sm:-mb-12 lg:-mb-16
+	  "
 	  onWheel={handleWheel}
 	  onTouchStart={handleTouchStart}
 	  onTouchEnd={handleTouchEnd}
 	>
 	  {/* ФОН — БОЛЬШОЙ ОТПЕЧАТОК ПАЛЬЦА */}
 	  <div className="pointer-events-none absolute inset-0">
-		{/* Большой размазанный отпечаток слева снизу */}
-		<div className="absolute -left-16 bottom-[-140px] opacity-[0.18]">
-		  <Fingerprint className="w-[520px] h-[520px] text-emerald-400/90 blur-[1px]" />
+		{/* Большой отпечаток — подняли выше и чуть уменьшили */}
+		<div className="absolute -left-10 bottom-32 opacity-[0.18]">
+		  <Fingerprint className="w-[420px] h-[420px] text-emerald-400/90 blur-[1px]" />
 		</div>
 
 		{/* Дополнительные круги/обводки вокруг отпечатка */}
-		<div className="absolute -left-24 -bottom-48 w-[520px] h-[520px] rounded-[36rem] border border-emerald-400/12" />
-		<div className="absolute -left-10 -bottom-40 w-[420px] h-[420px] rounded-[32rem] border border-emerald-400/10" />
-		<div className="absolute -bottom-40 left-0 right-0 h-80 bg-[radial-gradient(circle_at_10%_120%,rgba(34,197,94,0.45),transparent_55%)] opacity-90" />
+		<div className="absolute -left-20 bottom-28 w-[420px] h-[420px] rounded-[36rem] border border-emerald-400/12" />
+		<div className="absolute -left-4 bottom-36 w-[360px] h-[360px] rounded-[32rem] border border-emerald-400/10" />
+
+		{/* Радиальный подсвет снизу — оставили у самого низа секции */}
+		<div className="absolute -bottom-4 left-0 right-0 h-72 bg-[radial-gradient(circle_at_10%_120%,rgba(34,197,94,0.45),transparent_55%)] opacity-90" />
 	  </div>
 
 	  <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">

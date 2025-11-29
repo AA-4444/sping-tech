@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import CRMSecuritySection from "@/components/CRMSecuritySection";
 import heroBg from "@/assets/bg4.png";
 import crmWorkspaceMock from "@/assets/CRMMAC.png"; 
+import CrmFAQ from "@/components/CrmFAQ";
 import {
   ArrowRight,
   Users,
@@ -230,147 +231,191 @@ const CrmPlatformPage = () => {
 		  </div>
 		</section>
 
+	{/* CRM MODULES + CRM WORKSPACE WITH SHARED BACKGROUND LINES */}
+	<section className="relative bg-background py-12 sm:py-16 lg:py-20 overflow-hidden">
+	  {/* === ОБЩИЙ ФОН С ЛИНИЯМИ ДЛЯ ОБЕИХ CRM-СЕКЦИЙ === */}
+	  <div className="pointer-events-none absolute inset-0 z-0">
+		{/* мягкий золотой свет справа внизу */}
+		<div
+		  className="
+			absolute inset-y-[10%] right-[-25%]
+			w-[1300px]
+			bg-[radial-gradient(circle_at_75%_60%,rgba(250,204,21,0.26),transparent_65%)]
+			blur-3xl
+			opacity-75
+		  "
+		/>
+	
+		{/* единый SVG с линиями, проходящими через обе секции */}
+		<svg
+		  className="absolute inset-0 w-full h-full"
+		  viewBox="0 0 1200 1600"
+		  preserveAspectRatio="none"
+		  fill="none"
+		  stroke="currentColor"
+		  strokeWidth="1"
+		  strokeLinecap="round"
+		  style={{ color: "rgba(250,204,21,0.22)" }}
+		>
+		  {Array.from({ length: 24 }).map((_, i) => {
+			const offset = i * 40 - 320; // расстояние между линиями
+	
+			return (
+			  <path
+				key={i}
+				d={`
+				  M 0 ${0 + offset}
+				  C 360 ${220 + offset},
+					720 ${680 + offset},
+					1200 ${1500 + offset}
+				`}
+			  />
+			);
+		  })}
+		</svg>
+	  </div>
+	
+	  {/* === КОНТЕНТ ОБЕИХ CRM-СЕКЦИЙ === */}
+	  <div className="relative z-10">
 		{/* CRM MODULES – DRUM */}
-		<section className="py-12 sm:py-16 lg:py-20 bg-background">
-		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div className="max-w-3xl mb-10 space-y-3">
-			  <p className="text-xs uppercase tracking-[0.25em] text-primary/80">
-				CRM modules
-			  </p>
-			  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-				One CRM stack that{" "}
-				<span className="text-primary">keeps players active</span>
-			  </h2>
-			  <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
-				Connect data, segments and journeys in a single system:
-				Player 360, campaign automation and analytics built
-				specifically for iGaming operators.
-			  </p>
-			</div>
-
-			<div
-			  className="relative max-w-5xl mx-auto h-[420px] sm:h-[360px] lg:h-[320px] overflow-hidden touch-none"
-			  onWheel={handleWheel}
-			  onTouchStart={handleTouchStart}
-			  onTouchMove={handleTouchMove}
-			  onTouchEnd={handleTouchEnd}
-			>
-			  {crmModules.map((module, index) => {
-				const ModuleIcon = module.icon;
-				const offset = index - moduleIndex;
-
-				const translateY = offset * 80;
-				const abs = Math.abs(offset);
-				const scale = abs === 0 ? 1 : 0.9;
-				const opacity = abs === 0 ? 1 : abs === 1 ? 0.55 : 0;
-				const zIndex = crmModules.length - abs;
-
-				if (abs > 1) {
-				  return (
-					<article
-					  key={module.id}
-					  className="absolute left-0 right-0 mx-auto w-full md:w-[90%]"
-					  style={{ opacity: 0, pointerEvents: "none" }}
-					/>
-				  );
-				}
-
+		<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+		  <div className="max-w-3xl mb-10 space-y-3">
+			<p className="text-xs uppercase tracking-[0.25em] text-primary/80">
+			  CRM modules
+			</p>
+			<h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+			  One CRM stack that{" "}
+			  <span className="text-primary">keeps players active</span>
+			</h2>
+			<p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
+			  Connect data, segments and journeys in a single system:
+			  Player 360, campaign automation and analytics built
+			  specifically for iGaming operators.
+			</p>
+		  </div>
+	
+		  <div
+			className="relative max-w-5xl mx-auto h-[420px] sm:h-[360px] lg:h-[320px] overflow-hidden touch-none"
+			onWheel={handleWheel}
+			onTouchStart={handleTouchStart}
+			onTouchMove={handleTouchMove}
+			onTouchEnd={handleTouchEnd}
+		  >
+			{crmModules.map((module, index) => {
+			  const ModuleIcon = module.icon;
+			  const offset = index - moduleIndex;
+	
+			  const translateY = offset * 80;
+			  const abs = Math.abs(offset);
+			  const scale = abs === 0 ? 1 : 0.9;
+			  const opacity = abs === 0 ? 1 : abs === 1 ? 0.55 : 0;
+			  const zIndex = crmModules.length - abs;
+	
+			  if (abs > 1) {
 				return (
 				  <article
 					key={module.id}
-					className="absolute left-0 right-0 mx-auto w-full md:w-[90%] rounded-3xl border bg-card/95 shadow-[0_18px_45px_rgba(0,0,0,0.7)]"
-					style={{
-					  borderColor:
-						abs === 0
-						  ? "rgba(250, 204, 21, 0.9)"
-						  : "rgba(250, 204, 21, 0.45)",
-					  transform: `translateY(${translateY}%) scale(${scale})`,
-					  opacity,
-					  zIndex,
-					  transition:
-						"transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.35s ease-out, border-color 0.35s ease-out",
-					  pointerEvents: abs === 0 ? "auto" : "none",
-					}}
-				  >
-					<div className="px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
-					  <div className="flex items-start justify-between gap-4 mb-4">
-						<div className="flex items-center gap-3">
-						  <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center rounded-2xl border border-yellow-400/60 bg-yellow-400/5">
-							<ModuleIcon className="h-5 w-5 text-yellow-400" />
-						  </div>
-						  <div>
-							<h3 className="text-lg sm:text-xl font-semibold">
-							  {module.title}
-							</h3>
-							<p className="text-xs text-muted-foreground mt-1">
-							  Core block of the CRM stack.
-							</p>
-						  </div>
+					className="absolute left-0 right-0 mx-auto w-full md:w-[90%]"
+					style={{ opacity: 0, pointerEvents: "none" }}
+				  />
+				);
+			  }
+	
+			  return (
+				<article
+				  key={module.id}
+				  className="absolute left-0 right-0 mx-auto w-full md:w-[90%] rounded-3xl border bg-card/95 shadow-[0_18px_45px_rgba(0,0,0,0.7)]"
+				  style={{
+					borderColor:
+					  abs === 0
+						? "rgba(250, 204, 21, 0.9)"
+						: "rgba(250, 204, 21, 0.45)",
+					transform: `translateY(${translateY}%) scale(${scale})`,
+					opacity,
+					zIndex,
+					transition:
+					  "transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.35s ease-out, border-color 0.35s ease-out",
+					pointerEvents: abs === 0 ? "auto" : "none",
+				  }}
+				>
+				  <div className="px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
+					<div className="flex items-start justify-between gap-4 mb-4">
+					  <div className="flex items-center gap-3">
+						<div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center rounded-2xl border border-yellow-400/60 bg-yellow-400/5">
+						  <ModuleIcon className="h-5 w-5 text-yellow-400" />
 						</div>
-
-						<div className="hidden sm:inline-flex items-center rounded-full border border-yellow-400/40 bg-yellow-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-yellow-300">
-						  CRM module
+						<div>
+						  <h3 className="text-lg sm:text-xl font-semibold">
+							{module.title}
+						  </h3>
+						  <p className="text-xs text-muted-foreground mt-1">
+							Core block of the CRM stack.
+						  </p>
 						</div>
 					  </div>
-
-					  <p className="text-sm sm:text-[15px] text-muted-foreground mb-4 max-w-2xl">
-						{module.description}
-					  </p>
-
-					  <div className="grid sm:grid-cols-2 gap-2.5 text-sm text-muted-foreground">
-						{module.features.map((f) => (
-						  <div key={f} className="flex gap-2">
-							<span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-yellow-400/80 flex-shrink-0" />
-							<span>{f}</span>
-						  </div>
-						))}
+	
+					  <div className="hidden sm:inline-flex items-center rounded-full border border-yellow-400/40 bg-yellow-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-yellow-300">
+						CRM module
 					  </div>
 					</div>
-				  </article>
-				);
-			  })}
-
-			  {/* индикаторы справа (десктоп) */}
-			  <div className="absolute right-3 bottom-3 hidden sm:flex items-center gap-3">
-				<div className="flex flex-col gap-1">
-				  {crmModules.map((module, index) => (
-					<button
-					  key={module.id}
-					  type="button"
-					  onClick={() => setModuleIndex(index)}
-					  className={`h-1.5 w-4 rounded-full transition-all ${
-						index === moduleIndex
-						  ? "bg-yellow-400 w-6"
-						  : "bg-muted hover:bg-yellow-400/70"
-					  }`}
-					/>
-				  ))}
-				</div>
+	
+					<p className="text-sm sm:text-[15px] text-muted-foreground mb-4 max-w-2xl">
+					  {module.description}
+					</p>
+	
+					<div className="grid sm:grid-cols-2 gap-2.5 text-sm text-muted-foreground">
+					  {module.features.map((f) => (
+						<div key={f} className="flex gap-2">
+						  <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-yellow-400/80 flex-shrink-0" />
+						  <span>{f}</span>
+						</div>
+					  ))}
+					</div>
+				  </div>
+				</article>
+			  );
+			})}
+	
+			{/* индикаторы справа (десктоп) */}
+			<div className="absolute right-3 bottom-3 hidden sm:flex items-center gap-3">
+			  <div className="flex flex-col gap-1">
+				{crmModules.map((module, index) => (
+				  <button
+					key={module.id}
+					type="button"
+					onClick={() => setModuleIndex(index)}
+					className={`h-1.5 w-4 rounded-full transition-all ${
+					  index === moduleIndex
+						? "bg-yellow-400 w-6"
+						: "bg-muted hover:bg-yellow-400/70"
+					}`}
+				  />
+				))}
 			  </div>
 			</div>
-
-			{/* индикатор на телефоне */}
-			<div className="mt-4 flex sm:hidden justify-center gap-2">
-			  {crmModules.map((module, index) => (
-				<button
-				  key={module.id}
-				  type="button"
-				  onClick={() => setModuleIndex(index)}
-				  className={`h-2 w-2 rounded-full transition-all ${
-					index === moduleIndex
-					  ? "bg-yellow-400 scale-110"
-					  : "bg-muted hover:bg-yellow-300/70"
-				  }`}
-				/>
-			  ))}
-			</div>
 		  </div>
-		</section>
-
-		{/* CRM WORKSPACE / FRONT-END ANALOG */}
-		<section className="py-12 sm:py-16 lg:py-20 bg-secondary/5">
+	
+		  {/* индикатор на телефоне */}
+		  <div className="mt-4 flex sm:hidden justify-center gap-2">
+			{crmModules.map((module, index) => (
+			  <button
+				key={module.id}
+				type="button"
+				onClick={() => setModuleIndex(index)}
+				className={`h-2 w-2 rounded-full transition-all ${
+				  index === moduleIndex
+					? "bg-yellow-400 scale-110"
+					: "bg-muted hover:bg-yellow-300/70"
+				}`}
+			  />
+			))}
+		  </div>
+		</div>
+	
+		{/* CRM WORKSPACE SUBSECTION */}
+		<div className="mt-16">
 		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div className="grid gap-10 lg:grid-cols-2 items-center">
+			<div className="grid gap-10 lg:grid-cols-2 items-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
 			  {/* TEXT */}
 			  <div className="space-y-5">
 				<p className="text-xs uppercase tracking-[0.25em] text-primary/80">
@@ -388,7 +433,7 @@ const CrmPlatformPage = () => {
 				  the player. Build segments, launch campaigns and track
 				  response without constant exports and spreadsheets.
 				</p>
-		
+	
 				<div className="grid gap-4 sm:grid-cols-2 text-sm text-muted-foreground">
 				  <div className="space-y-1.5">
 					<div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/40 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-primary">
@@ -411,7 +456,7 @@ const CrmPlatformPage = () => {
 					</p>
 				  </div>
 				</div>
-		
+	
 				<div className="flex flex-wrap gap-4 text-xs sm:text-sm text-muted-foreground pt-2">
 				  <div>
 					<p className="font-semibold text-foreground">Cross-brand</p>
@@ -425,7 +470,7 @@ const CrmPlatformPage = () => {
 				  </div>
 				</div>
 			  </div>
-		
+	
 			  {/* RIGHT SIDE — PURE IMAGE */}
 			  <div className="relative flex justify-center">
 				<img
@@ -436,10 +481,14 @@ const CrmPlatformPage = () => {
 			  </div>
 			</div>
 		  </div>
-		</section>
+		</div>
+	  </div>
+	</section>
 
 		
 		<CRMSecuritySection />
+			
+			<CrmFAQ />
 	  </main>
 
 	  <div className="relative z-20">

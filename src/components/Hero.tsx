@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-casino.jpg";
+import heroImage from "@/assets/bg5.png";
 import { NavLink } from "@/components/NavLink";
 
 const Hero = () => {

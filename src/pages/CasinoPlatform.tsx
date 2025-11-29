@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import CasinoSecuritySection from "@/components/CasinoSecuritySection";
 import heroBg from "@/assets/bg2.png";
 import platformMock from "@/assets/casino-mac.png"; 
+import CasinoFAQ from "@/components/CasinoFAQ";
 import {
   ArrowRight,
   Gift,
@@ -240,152 +241,195 @@ const CasinoPlatformPage = () => {
 		</section>
 	
 
+	{/* PROMO ENGINES + FLEXIBLE FRONT-END WITH SHARED BACKGROUND LINES */}
+	<section className="relative bg-background py-12 sm:py-16 lg:py-20 overflow-hidden">
+	  {/* === ОБЩИЙ ФОН С ЛИНИЯМИ ДЛЯ ОБЕИХ СЕКЦИЙ === */}
+	  <div className="pointer-events-none absolute inset-0 z-0">
+		{/* мягкий золотой свет справа внизу */}
+		<div
+		  className="
+			absolute inset-y-[10%] right-[-25%]
+			w-[1300px]
+			bg-[radial-gradient(circle_at_75%_60%,rgba(250,204,21,0.26),transparent_65%)]
+			blur-3xl
+			opacity-75
+		  "
+		/>
+	
+		{/* единый SVG с линиями, проходящими через обе секции */}
+		<svg
+		  className="absolute inset-0 w-full h-full"
+		  viewBox="0 0 1200 1600"
+		  preserveAspectRatio="none"
+		  fill="none"
+		  stroke="currentColor"
+		  strokeWidth="1"
+		  strokeLinecap="round"
+		  style={{ color: "rgba(250,204,21,0.22)" }}
+		>
+		  {Array.from({ length: 24 }).map((_, i) => {
+			const offset = i * 40 - 320; // расстояние между линиями
+	
+			return (
+			  <path
+				key={i}
+				d={`
+				  M 0 ${0 + offset}
+				  C 360 ${220 + offset},
+					720 ${680 + offset},
+					1200 ${1500 + offset}
+				`}
+			  />
+			);
+		  })}
+		</svg>
+	  </div>
+	
+	  
+	  <div className="relative z-10">
 		{/* BONUS / JACKPOT / TOURNAMENT ENGINES – DRUM */}
-		<section className="py-12 sm:py-16 lg:py-20 bg-background">
-		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div className="max-w-3xl mb-10 space-y-3">
-			  <p className="text-xs uppercase tracking-[0.25em] text-primary/80">
-				Engines
-			  </p>
-			  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-				Promotion engines that{" "}
-				<span className="text-primary">actually move the numbers</span>
-			  </h2>
-			  <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
-				Our bonus, jackpot and tournament engines are built for growth teams:
-				fast to configure, deeply configurable, and safe from abuse.
-			  </p>
-			</div>
-
-			{/* DRUM-CAROUSEL */}
-			<div
-			  className="relative max-w-5xl mx-auto h-[420px] sm:h-[360px] lg:h-[320px] overflow-hidden touch-none"
-			  onWheel={handleEngineWheel}
-			  onTouchStart={handleEngineTouchStart}
-			  onTouchMove={handleEngineTouchMove}
-			  onTouchEnd={handleEngineTouchEnd}
-			>
-			  {promotionEngines.map((engine, index) => {
-				const EngineIcon = engine.icon;
-				const offset = index - engineIndex;
-			
-				// Чуть меньше шаг, чтобы верхняя/нижняя были видны аккуратно
-				const translateY = offset * 80;
-				const abs = Math.abs(offset);
-				const scale = abs === 0 ? 1 : 0.9;
-				const opacity = abs === 0 ? 1 : abs === 1 ? 0.55 : 0;
-				const zIndex = promotionEngines.length - abs;
-			
-				if (abs > 1) {
-				  return (
-					<article
-					  key={engine.id}
-					  className="absolute left-0 right-0 mx-auto w-full md:w-[90%]"
-					  style={{ opacity: 0, pointerEvents: "none" }}
-					/>
-				  );
-				}
-			
+		<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+		  <div className="max-w-3xl mb-10 space-y-3">
+			<p className="text-xs uppercase tracking-[0.25em] text-primary/80">
+			  Engines
+			</p>
+			<h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+			  Promotion engines that{" "}
+			  <span className="text-primary">actually move the numbers</span>
+			</h2>
+			<p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
+			  Our bonus, jackpot and tournament engines are built for growth teams:
+			  fast to configure, deeply configurable, and safe from abuse.
+			</p>
+		  </div>
+	
+		  {/* DRUM-CAROUSEL */}
+		  <div
+			className="relative max-w-5xl mx-auto h-[420px] sm:h-[360px] lg:h-[320px] overflow-hidden touch-none"
+			onWheel={handleEngineWheel}
+			onTouchStart={handleEngineTouchStart}
+			onTouchMove={handleEngineTouchMove}
+			onTouchEnd={handleEngineTouchEnd}
+		  >
+			{promotionEngines.map((engine, index) => {
+			  const EngineIcon = engine.icon;
+			  const offset = index - engineIndex;
+	
+			  const translateY = offset * 80;
+			  const abs = Math.abs(offset);
+			  const scale = abs === 0 ? 1 : 0.9;
+			  const opacity = abs === 0 ? 1 : abs === 1 ? 0.55 : 0;
+			  const zIndex = promotionEngines.length - abs;
+	
+			  if (abs > 1) {
 				return (
 				  <article
 					key={engine.id}
-					className="absolute left-0 right-0 mx-auto w-full md:w-[90%] rounded-3xl border bg-card/95 shadow-[0_18px_45px_rgba(0,0,0,0.7)]"
-					style={{
-					  borderColor:
-						abs === 0
-						  ? "rgba(250, 204, 21, 0.9)"
-						  : "rgba(250, 204, 21, 0.45)",
-					  transform: `translateY(${translateY}%) scale(${scale})`,
-					  opacity,
-					  zIndex,
-					  transition:
-						"transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.35s ease-out, border-color 0.35s ease-out",
-					  pointerEvents: abs === 0 ? "auto" : "none",
-					}}
-				  >
-					<div className="px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
-					  {/* верх: иконка + заголовок + бейдж */}
-					  <div className="flex items-start justify-between gap-4 mb-4">
-						<div className="flex items-center gap-3">
-						  <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center rounded-2xl border border-yellow-400/60 bg-yellow-400/5">
-							<EngineIcon className="h-5 w-5 text-yellow-400" />
-						  </div>
-						  <div>
-							<h3 className="text-lg sm:text-xl font-semibold">
-							  {engine.title}
-							</h3>
-							<p className="text-xs text-muted-foreground mt-1">
-							  Part of the core promo engine stack.
-							</p>
-						  </div>
+					className="absolute left-0 right-0 mx-auto w-full md:w-[90%]"
+					style={{ opacity: 0, pointerEvents: "none" }}
+				  />
+				);
+			  }
+	
+			  return (
+				<article
+				  key={engine.id}
+				  className="absolute left-0 right-0 mx-auto w-full md:w-[90%] rounded-3xl border bg-card/95 shadow-[0_18px_45px_rgba(0,0,0,0.7)]"
+				  style={{
+					borderColor:
+					  abs === 0
+						? "rgba(250, 204, 21, 0.9)"
+						: "rgba(250, 204, 21, 0.45)",
+					transform: `translateY(${translateY}%) scale(${scale})`,
+					opacity,
+					zIndex,
+					transition:
+					  "transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.35s ease-out, border-color 0.35s ease-out",
+					pointerEvents: abs === 0 ? "auto" : "none",
+				  }}
+				>
+				  <div className="px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-6">
+					{/* верх: иконка + заголовок + бейдж */}
+					<div className="flex items-start justify-between gap-4 mb-4">
+					  <div className="flex items-center gap-3">
+						<div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center rounded-2xl border border-yellow-400/60 bg-yellow-400/5">
+						  <EngineIcon className="h-5 w-5 text-yellow-400" />
 						</div>
-			
-						<div className="hidden sm:inline-flex items-center rounded-full border border-yellow-400/40 bg-yellow-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-yellow-300">
-						  Promo module
+						<div>
+						  <h3 className="text-lg sm:text-xl font-semibold">
+							{engine.title}
+						  </h3>
+						  <p className="text-xs text-muted-foreground mt-1">
+							Part of the core promo engine stack.
+						  </p>
 						</div>
 					  </div>
-			
-					  {/* описание */}
-					  <p className="text-sm sm:text-[15px] text-muted-foreground mb-4 max-w-2xl">
-						{engine.description}
-					  </p>
-			
-					  {/* фичи */}
-					  <div className="grid sm:grid-cols-2 gap-2.5 text-sm text-muted-foreground">
-						{engine.features.map((f) => (
-						  <div key={f} className="flex gap-2">
-							<span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-yellow-400/80 flex-shrink-0" />
-							<span>{f}</span>
-						  </div>
-						))}
+	
+					  <div className="hidden sm:inline-flex items-center rounded-full border border-yellow-400/40 bg-yellow-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-yellow-300">
+						Promo module
 					  </div>
 					</div>
-				  </article>
-				);
-			  })}
-			
-			  {/* индикаторы справа (десктоп) */}
-			  <div className="absolute right-3 bottom-3 hidden sm:flex items-center gap-3">
-				<div className="flex flex-col gap-1">
-				  {promotionEngines.map((engine, index) => (
-					<button
-					  key={engine.id}
-					  type="button"
-					  onClick={() => setEngineIndex(index)}
-					  className={`h-1.5 w-4 rounded-full transition-all ${
-						index === engineIndex
-						  ? "bg-yellow-400 w-6"
-						  : "bg-muted hover:bg-yellow-400/70"
-					  }`}
-					/>
-				  ))}
-				</div>
+	
+					{/* описание */}
+					<p className="text-sm sm:text-[15px] text-muted-foreground mb-4 max-w-2xl">
+					  {engine.description}
+					</p>
+	
+					{/* фичи */}
+					<div className="grid sm:grid-cols-2 gap-2.5 text-sm text-muted-foreground">
+					  {engine.features.map((f) => (
+						<div key={f} className="flex gap-2">
+						  <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-yellow-400/80 flex-shrink-0" />
+						  <span>{f}</span>
+						</div>
+					  ))}
+					</div>
+				  </div>
+				</article>
+			  );
+			})}
+	
+			{/* индикаторы справа (десктоп) */}
+			<div className="absolute right-3 bottom-3 hidden sm:flex items-center gap-3">
+			  <div className="flex flex-col gap-1">
+				{promotionEngines.map((engine, index) => (
+				  <button
+					key={engine.id}
+					type="button"
+					onClick={() => setEngineIndex(index)}
+					className={`h-1.5 w-4 rounded-full transition-all ${
+					  index === engineIndex
+						? "bg-yellow-400 w-6"
+						: "bg-muted hover:bg-yellow-400/70"
+					}`}
+				  />
+				))}
 			  </div>
 			</div>
-			
-			{/* индикатор на телефоне */}
-			<div className="mt-4 flex sm:hidden justify-center gap-2">
-			  {promotionEngines.map((engine, index) => (
-				<button
-				  key={engine.id}
-				  type="button"
-				  onClick={() => setEngineIndex(index)}
-				  className={`h-2 w-2 rounded-full transition-all ${
-					index === engineIndex
-					  ? "bg-yellow-400 scale-110"
-					  : "bg-muted hover:bg-yellow-300/70"
-				  }`}
-				/>
-			  ))}
-			</div>
 		  </div>
-		</section>
-
-		{/* FLEXIBLE FRONT-END SECTION */}
-		{/* FLEXIBLE FRONT-END SECTION */}
-		<section className="py-12 sm:py-16 lg:py-20 bg-secondary/5">
-		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div className="grid gap-10 lg:grid-cols-2 items-center">
+	
+		  {/* индикатор на телефоне */}
+		  <div className="mt-4 flex sm:hidden justify-center gap-2">
+			{promotionEngines.map((engine, index) => (
+			  <button
+				key={engine.id}
+				type="button"
+				onClick={() => setEngineIndex(index)}
+				className={`h-2 w-2 rounded-full transition-all ${
+				  index === engineIndex
+					? "bg-yellow-400 scale-110"
+					: "bg-muted hover:bg-yellow-300/70"
+				}`}
+			  />
+			))}
+		  </div>
+		</div>
+	
+		{/* FLEXIBLE FRONT-END SUBSECTION */}
+		<div className="mt-16">
+		  <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="grid gap-10 lg:grid-cols-2 items-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+			  
 			  {/* TEXT */}
 			  <div className="space-y-5">
 				<p className="text-xs uppercase tracking-[0.25em] text-primary/80">
@@ -410,20 +454,15 @@ const CasinoPlatformPage = () => {
 					  <LayoutTemplate className="h-3.5 w-3.5" />
 					  Widgets
 					</div>
-					<p>
-					  Home, category carousels, providers, jackpots, tournaments
-					  and more.
-					</p>
+					<p>Home, category carousels, providers, jackpots, tournaments and more.</p>
 				  </div>
+		
 				  <div className="space-y-1.5">
 					<div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/40 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-primary">
 					  <Gamepad2 className="h-3.5 w-3.5" />
 					  Game catalog
 					</div>
-					<p>
-					  200+ games connected via aggregation — slots, live,
-					  instant and exclusive content.
-					</p>
+					<p>200+ games connected via aggregation — slots, live, instant and exclusive content.</p>
 				  </div>
 				</div>
 		
@@ -432,29 +471,35 @@ const CasinoPlatformPage = () => {
 					<p className="font-semibold text-foreground">200+ games</p>
 					<p>Ready to plug into your lobby.</p>
 				  </div>
+		
 				  <div>
-					<p className="font-semibold text-foreground">
-					  Region-specific UX
-					</p>
+					<p className="font-semibold text-foreground">Region-specific UX</p>
 					<p>Line-ups per GEO, segment or brand.</p>
 				  </div>
 				</div>
 			  </div>
 		
 			  {/* VISUAL MOCK → REAL IMAGE */}
-			<div className="relative flex justify-center">
-			  <img
-				src={platformMock}
-				alt="Sping.tech casino front-end on MacBook"
-				className="w-full h-auto object-contain"
-			  />
-			</div>
+			  <div className="relative flex justify-center">
+				<img
+				  src={platformMock}
+				  alt="Sping.tech casino front-end on MacBook"
+				  className="w-full h-auto max-w-[640px] object-contain"
+				/>
+			  </div>
+		
 			</div>
 		  </div>
-		</section>
+		</div>
+	  </div>
+	</section>
 
 		{/* RISK & ANTI-FRAUD SECTION */}
 		<CasinoSecuritySection />
+			
+		<CasinoFAQ />
+			
+			
 	  </main>
 
 	  <div className="relative z-20">

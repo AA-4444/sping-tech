@@ -103,20 +103,22 @@ const CRMSecuritySection = () => {
 
   return (
 	<section
-	  className="relative overflow-hidden py-24 bg-gradient-to-b from-navy via-background to-background -mb-10 sm:-mb-12 lg:-mb-16"
+	  className="relative pt-24 pb-32 bg-gradient-to-b from-navy via-background to-background -mb-10 sm:-mb-12 lg:-mb-16"
 	  onWheel={handleWheel}
 	  onTouchStart={handleTouchStart}
 	  onTouchEnd={handleTouchEnd}
 	>
 	  {/* Background — large CRM icon (Users) */}
 	  <div className="pointer-events-none absolute inset-0">
-		<div className="absolute -left-16 bottom-[-140px] opacity-[0.18]">
-		  <Users className="w-[520px] h-[520px] text-purple-400/90 blur-[1px]" />
+		{/* Большая иконка — поднята выше и полностью внутри секции */}
+		<div className="absolute -left-10 bottom-40 md:bottom-20 opacity-[0.18]">
+		  <Users className="w-[420px] h-[420px] text-purple-400/90 blur-[1px]" />
 		</div>
 
-		<div className="absolute -left-24 -bottom-48 w-[520px] h-[520px] rounded-[36rem] border border-purple-400/12" />
-		<div className="absolute -left-10 -bottom-40 w-[420px] h-[420px] rounded-[32rem] border border-purple-400/10" />
-		<div className="absolute -bottom-40 left-0 right-0 h-80 bg-[radial-gradient(circle_at_10%_120%,rgba(168,85,247,0.45),transparent_55%)] opacity-90" />
+		<div className="absolute -left-20 bottom-32 w-[420px] h-[420px] rounded-[36rem] border border-purple-400/12" />
+		<div className="absolute -left-6 bottom-40 w-[360px] h-[360px] rounded-[32rem] border border-purple-400/10" />
+
+		<div className="absolute -bottom-4 left-0 right-0 h-72 bg-[radial-gradient(circle_at_10%_120%,rgba(168,85,247,0.45),transparent_55%)] opacity-90" />
 	  </div>
 
 	  <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
