@@ -17,6 +17,8 @@ import OurTeamPage from "./pages/OurTeam";
 import PlatformsShowcasePage from "./pages/PlatformsShowcasePage";
 import CasinoPlatform from "./pages/CasinoPlatform";
 import CrmPlatform from "./pages/CrmPlatform";
+import PrivacyPolicyPage from "./pages/PrivacyPolicy";
+import CookiesPolicyPage from "./pages/CookiesPolicy";
 
 
 const queryClient = new QueryClient();
@@ -40,6 +42,8 @@ const App = () => (
           <Route path="/viewplatform" element={< PlatformsShowcasePage />} />
           <Route path="/casino" element={< CasinoPlatform />} />
           <Route path="/crm" element={< CrmPlatform />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/cookies" element={<CookiesPolicyPage />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

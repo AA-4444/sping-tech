@@ -58,6 +58,13 @@ const coreTeam: Teammate[] = [
 	email: "client@sping.tech",
 	avatarUrl: vasoPhoto,
   },
+  {
+	  id: 6,
+	  name: "Alina Dianova",
+	  role: "USA Miami represantative",
+	  email: "@dianovafilmdirector",
+	  avatarUrl: vasoPhoto,
+	},
 ];
 
 const contacts: Teammate[] = [

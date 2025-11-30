@@ -7,9 +7,9 @@ import sgLogo from "@/assets/sg.png";
 import { useRef, type WheelEvent } from "react";
 
 const partners = [
-  { name: "Google", logo: googleLogo },
-  { name: "TGTart", logo: tgtartLogo },
-  { name: "SG", logo: sgLogo },
+  { name: "Google", logo: googleLogo, url: "https://google.com" },
+  { name: "TGTart", logo: tgtartLogo, url: "https://trgtart.com" },
+  { name: "StateGate", logo: sgLogo, url: "https://stategate.us" },
 ];
 
 const PartnersSection = () => {
@@ -28,7 +28,6 @@ const PartnersSection = () => {
   return (
 	<section className="py-16 sm:py-20 bg-background">
 	  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-		
 		<h2 className="text-3xl sm:text-4xl font-bold mb-10">Partners</h2>
 
 		<div
@@ -42,18 +41,25 @@ const PartnersSection = () => {
 		  "
 		>
 		  {partners.map((p) => (
-			<div
+			<a
 			  key={p.name}
+			  href={p.url}
+			  target="_blank"
+			  rel="noopener noreferrer"
 			  className="
 				snap-start
 				flex items-center justify-center
 
-				min-w-[80px] aspect-square       /* 📱 Mobile */
-				sm:min-w-[100px]                 /* 💻 Desktop */
+				min-w-[80px] aspect-square
+				sm:min-w-[100px]
 
 				rounded-full
 				bg-card/95
 				border border-yellow-400/60
+
+				transition-colors
+				hover:border-yellow-300
+				hover:bg-yellow-400/5
 			  "
 			>
 			  <img
@@ -61,7 +67,7 @@ const PartnersSection = () => {
 				alt={p.name}
 				className="max-w-[60%] max-h-[60%] object-contain opacity-95"
 			  />
-			</div>
+			</a>
 		  ))}
 		</div>
 	  </div>

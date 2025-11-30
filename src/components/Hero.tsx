@@ -44,7 +44,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            White-label casino platforms with full customization. Launch your vision with enterprise-grade technology.
+            Software development company specializing in building iGaming platforms, casino systems, and custom digital products for operators worldwide.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

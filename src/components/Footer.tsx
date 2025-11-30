@@ -16,11 +16,11 @@ const Footer = () => {
 		}}
 	  />
 
-	  {/* Весь контент поверх шума */}
 	  <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-		{/* GRID 4 COLUMNS like GR8 */}
+		{/* GRID 4 COLS */}
 		<div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-		  {/* COLUMN 1 — SOLUTIONS */}
+		  
+		  {/* Solutions */}
 		  <div className="space-y-4">
 			<h4 className="text-sm font-semibold text-foreground/90 tracking-wide">
 			  Solutions
@@ -33,7 +33,7 @@ const Footer = () => {
 			</ul>
 		  </div>
 
-		  {/* COLUMN 2 – PLATFORM */}
+		  {/* Platform */}
 		  <div className="space-y-4">
 			<h4 className="text-sm font-semibold text-foreground/90 tracking-wide">
 			  Platform
@@ -47,7 +47,7 @@ const Footer = () => {
 			</ul>
 		  </div>
 
-		  {/* COLUMN 3 – COMPANY */}
+		  {/* Company */}
 		  <div className="space-y-4">
 			<h4 className="text-sm font-semibold text-foreground/90 tracking-wide">
 			  Company
@@ -71,7 +71,7 @@ const Footer = () => {
 			</ul>
 		  </div>
 
-		  {/* COLUMN 4 – CONTACTS */}
+		  {/* Contacts */}
 		  <div className="space-y-4">
 			<h4 className="text-sm font-semibold text-foreground/90 tracking-wide">
 			  Contacts
@@ -80,18 +80,16 @@ const Footer = () => {
 			<ul className="space-y-2 text-sm text-muted-foreground">
 			  <li>
 				<a
-				  href="mailto:contact@aereus.tech"
+				  href="mailto:contact@sping.tech"
 				  className="hover:text-primary transition-colors"
 				>
 				  contact@sping.tech
 				</a>
 			  </li>
-			  <li className="max-w-[180px]">
-				Street , Miami, USA
-			  </li>
+			  <li className="max-w-[180px]">Street , Miami, USA</li>
 			</ul>
 
-			{/* SOCIAL ICONS (square, round, left aligned) */}
+			{/* social */}
 			<div className="flex items-center gap-3 pt-2">
 			  <a
 				href="https://wa.me/48555111222"
@@ -114,26 +112,23 @@ const Footer = () => {
 		  </div>
 		</div>
 
-		{/* DISCLAIMER */}
+		{/* disclaimer */}
 		<p className="mt-10 text-center text-[11px] text-muted-foreground max-w-3xl mx-auto leading-relaxed">
 		  Sping.tech operates solely as a B2B software service provider within
 		  the iGaming industry, and as such, does not offer or operate direct
 		  gambling services to consumers on this website.
 		</p>
 
-		{/* COPYRIGHT + LEGAL LINKS */}
+		{/* copyright + legal */}
 		<div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
 		  <span>All rights reserved © {year} Sping.tech</span>
 
 		  <div className="flex gap-6">
-			<a
-			  href="/privacy-policy"
-			  className="hover:text-primary transition-colors"
-			>
+			<a href="/privacy" className="hover:text-primary transition-colors">
 			  Privacy Policy
 			</a>
 			<a href="/cookies" className="hover:text-primary transition-colors">
-			  Cookie Notice
+			  Cookies Policy
 			</a>
 			<a href="/legal" className="hover:text-primary transition-colors">
 			  Legal Disclaimer
