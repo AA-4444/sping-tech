@@ -44,7 +44,7 @@ const Testimonials = () => {
 		  </p>
 		</div>
 
-		{/* MOBILE LAYOUT (без жести) */}
+		
 		<div className="space-y-6 md:hidden">
 		  {testimonials.map((t) => (
 			<Card
@@ -77,7 +77,7 @@ const Testimonials = () => {
 		  ))}
 		</div>
 
-		{/* DESKTOP LAYOUT  (анимация с картинкой) */}
+		
 		<div
 		  className="
 			hidden md:grid
