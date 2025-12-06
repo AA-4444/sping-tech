@@ -34,7 +34,7 @@ const Testimonials = () => {
   return (
 	<section className="py-24 bg-background relative">
 	  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
+		{/* TITLE */}
 		<div className="text-center mb-16">
 		  <h2 className="text-5xl sm:text-6xl font-bold">
 			What our <span className="text-primary">clients say</span>
@@ -44,12 +44,44 @@ const Testimonials = () => {
 		  </p>
 		</div>
 
+		{/* MOBILE LAYOUT (без жести) */}
+		<div className="space-y-6 md:hidden">
+		  {testimonials.map((t) => (
+			<Card
+			  key={t.name}
+			  className="
+				rounded-2xl
+				bg-background
+				border border-border
+				p-6
+				flex flex-col gap-4
+			  "
+			>
+			  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary">
+				<Quote className="w-5 h-5 text-background" />
+			  </div>
+
+			  <p className="text-sm text-foreground leading-relaxed">
+				{t.quote}
+			  </p>
+
+			  <div>
+				<div className="font-semibold text-lg text-foreground">
+				  {t.name}
+				</div>
+				<div className="text-xs text-muted-foreground mt-1">
+				  {t.role}
+				</div>
+			  </div>
+			</Card>
+		  ))}
+		</div>
+
+		{/* DESKTOP LAYOUT  (анимация с картинкой) */}
 		<div
 		  className="
-			md:grid md:grid-cols-4 md:gap-8
-			flex gap-6
-			overflow-x-auto md:overflow-visible
-			pb-4
+			hidden md:grid
+			md:grid-cols-4 md:gap-8
 		  "
 		>
 		  {testimonials.map((t) => (
@@ -58,8 +90,6 @@ const Testimonials = () => {
 			  className="
 				relative group
 				h-[420px]
-				min-w-[280px] sm:min-w-[320px] md:min-w-0
-				shrink-0 md:shrink
 			  "
 			>
 			  <div
@@ -82,7 +112,11 @@ const Testimonials = () => {
 				"
 				style={{ boxShadow: "0 25px 50px -12px rgba(0,0,0,0.8)" }}
 			  >
-				<img src={testimonialImage} alt="" className="w-full h-full object-cover" />
+				<img
+				  src={testimonialImage}
+				  alt=""
+				  className="w-full h-full object-cover"
+				/>
 			  </div>
 
 			  <Card
@@ -112,14 +146,17 @@ const Testimonials = () => {
 				</p>
 
 				<div>
-				  <div className="font-semibold text-lg text-foreground">{t.name}</div>
-				  <div className="text-xs text-muted-foreground mt-1">{t.role}</div>
+				  <div className="font-semibold text-lg text-foreground">
+					{t.name}
+				  </div>
+				  <div className="text-xs text-muted-foreground mt-1">
+					{t.role}
+				  </div>
 				</div>
 			  </Card>
 			</div>
 		  ))}
 		</div>
-
 	  </div>
 	</section>
   );
