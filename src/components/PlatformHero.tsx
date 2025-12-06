@@ -25,31 +25,32 @@ const PlatformHero = () => {
   return (
 	<section
 	  className="
-		relative min-h-screen flex items-center justify-center overflow-hidden
-		pt-24             
-		sm:pt-16           
-		lg:pt-0            
+		relative min-h-screen flex items-start lg:items-center justify-center overflow-hidden
+		-mt-16                   
+		pt-44 sm:pt-48 md:pt-52  
+		lg:pt-40                 
+		pb-20
 	  "
 	>
-	  {/* === BACKGROUND LAYERS === */}
+		  {/* === BACKGROUND LAYERS === */}
 	  <div className="absolute inset-0 z-0">
 		{/* Базовый градиент-фон */}
 		<div className="absolute inset-0 bg-gradient-to-br from-navy via-background to-navy-light" />
 
-		{/* Анимированный градиент поверх */}
+		
 		<div
 		  className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/20 animate-pulse"
 		  style={{ animationDuration: "8s" }}
 		/>
 
-		{/* Картинка фоном с overlay */}
+		
 		<img
 		  src={platformHeroImage}
 		  alt="High-load Casino Platform"
 		  className="w-full h-full object-cover opacity-25 mix-blend-overlay"
 		/>
 
-		{/* Геометрический/радальный паттерн */}
+		
 		<div
 		  className="absolute inset-0 opacity-40"
 		  style={{
@@ -61,7 +62,7 @@ const PlatformHero = () => {
 		  }}
 		/>
 
-		{/* Светящиеся “шары” */}
+		
 		<div
 		  className="absolute top-1/4 left-1/4 w-80 h-80 bg-primary/25 rounded-full blur-3xl animate-pulse"
 		  style={{ animationDuration: "6s" }}
@@ -71,7 +72,7 @@ const PlatformHero = () => {
 		  style={{ animationDuration: "9s", animationDelay: "1.5s" }}
 		/>
 
-		{/* Нижний fade, чтобы текст читался */}
+		
 		<div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/95" />
 	  </div>
 
@@ -91,7 +92,7 @@ const PlatformHero = () => {
 			</p>
 		  </div>
 
-		  {/* Чипы */}
+		  
 		  <div className="flex flex-wrap justify-center gap-3 text-xs sm:text-sm">
 			<span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-4 py-1 text-foreground/90 transition-transform duration-200 hover:-translate-y-0.5">
 			  <Gauge className="h-4 w-4 text-primary" />
@@ -107,19 +108,46 @@ const PlatformHero = () => {
 			</span>
 		  </div>
 
-		  {/* Кнопки */}
-		  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-			<Button className="rounded-full bg-primary px-8 py-3 text-sm sm:text-base font-semibold text-primary-foreground shadow-[0_0_40px_hsl(var(--primary)/0.25)] hover:bg-primary/90 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] transition-all duration-300">
-			  Get started
-			</Button>
-
-			<Button
-			  variant="outline"
-			  className="rounded-full border-primary/60 px-8 py-3 text-sm sm:text-base font-medium text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300"
-			>
-			  Explore platform
-			</Button>
-		  </div>
+	 {/* button */}
+	<div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+	
+	  
+	  <Button
+		size="lg"
+		className="
+		  w-full sm:w-56          
+		  px-8 py-6 
+		  text-base sm:text-lg 
+		  font-semibold
+		  bg-primary text-primary-foreground
+		  hover:bg-primary/90
+		  shadow-[0_0_40px_hsl(var(--primary)/0.4)]
+		  transition-all
+		"
+	  >
+		Get started
+	  </Button>
+	
+	  
+	  <Button
+		size="lg"
+		variant="outline"
+		className="
+		  w-full sm:w-56          
+		  px-8 py-6 
+		  text-base sm:text-lg 
+		  font-semibold
+		  border-primary/60 
+		  text-foreground
+		  hover:border-primary 
+		  hover:bg-primary/10
+		  transition-all
+		"
+	  >
+		Explore platform
+	  </Button>
+	
+	</div>
 
 		  <p className="text-xs sm:text-sm text-muted-foreground/80 max-w-md mx-auto">
 			Built for high-load casino, sportsbook and crypto operations with

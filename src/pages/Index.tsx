@@ -11,6 +11,7 @@ import SecurityHighlights from "@/components/SecurityHighlights";
 import PartnersSection from "@/components/PartnersSection";
 import Footer from "@/components/Footer";
 import TrustSection from "@/components/TrustSection";
+import Testimonials from "@/components/Testimonials"; 
 
 const Index = () => {
   return (
@@ -20,13 +21,11 @@ const Index = () => {
       <SecurityCrypto />
       <Capabilities />
       <TrustSection />
-      < PartnersSection /> 
+      <PartnersSection />
+      <Testimonials />  
       <FAQ />
       <CTA />
-      
-      
-      {/* Footer */}
-      < Footer />
+      <Footer />
     </div>
   );
 };

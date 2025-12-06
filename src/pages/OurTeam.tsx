@@ -11,6 +11,7 @@ import iliaPhoto from "@/assets/ilia.png";
 import daniaPhoto from "@/assets/dania.png";
 import vasoPhoto from "@/assets/vaso.png";
 import spingLogo from "@/assets/sping-logo.png";
+import alina from "@/assets/alina.png";
 
 type Teammate = {
   id: number;
@@ -63,7 +64,7 @@ const coreTeam: Teammate[] = [
 	  name: "Alina Dianova",
 	  role: "USA Miami represantative",
 	  email: "@dianovafilmdirector",
-	  avatarUrl: vasoPhoto,
+	  avatarUrl: alina,
 	},
 ];
 
@@ -84,10 +85,10 @@ const contacts: Teammate[] = [
   },
   {
 	id: 3,
-	name: "Media & PR",
-	role: "Interviews, conference talks, insights, press materials and quotes.",
-	email: "client@sping.tech",
-	avatarUrl: spingLogo,        
+	name: "Alina Dianova",
+	role: "USA Miami represantative",
+	email: "@dianovafilmdirector",
+	avatarUrl: alina,        
   },
 ];
 
@@ -269,21 +270,21 @@ const OurTeamPage = () => {
 					  </p>
 					</div>
 		
-					{/* RIGHT – avatar or badge */}
 					<div className="flex items-center justify-end sm:justify-center">
 					  {item.avatarUrl ? (
-						<div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-card flex items-center justify-center">
+						<div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-card overflow-hidden flex items-center justify-center">
 						  <img
 							src={item.avatarUrl}
 							alt={item.name}
-							className="max-h-full max-w-full object-contain"
+							className="h-full w-full object-cover"
 						  />
 						</div>
 					  ) : (
 						<div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-[radial-gradient(circle_at_30%_0%,rgba(255,184,66,0.35),transparent_60%),radial-gradient(circle_at_100%_100%,rgba(255,184,66,0.2),transparent_55%)] flex items-center justify-center text-xs font-semibold uppercase tracking-[0.18em] text-primary/90">
-						  Aereus
+						 
 						</div>
 					  )}
+					
 					</div>
 				  </div>
 				</a>
