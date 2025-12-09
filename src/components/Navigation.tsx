@@ -90,7 +90,7 @@ const Navigation = () => {
 
           {/* Mobile  Button */}
           <button
-            className="md:hidden p-2 rounded-xl bg-background/80 border border-border shadow-sm hover:bg-background/90 transition-colors"
+            className="md:hidden p-3 rounded-xl bg-background/80 border border-border shadow-sm hover:bg-background/90 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu className="w-5 h-5" />

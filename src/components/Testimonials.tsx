@@ -32,7 +32,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-	<section className="py-24 bg-background relative">
+	<section className="py-24 bg-background relative overflow-visible">
 	  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 		{/* TITLE */}
 		<div className="text-center mb-16">
@@ -77,7 +77,7 @@ const Testimonials = () => {
 		  ))}
 		</div>
 
-		
+		{/* DESKTOP  */}
 		<div
 		  className="
 			hidden md:grid
@@ -89,11 +89,13 @@ const Testimonials = () => {
 			  key={t.name}
 			  className="
 				relative group
-				h-[420px]
+				h-auto md:h-[420px]
 			  "
 			>
+			
 			  <div
 				className="
+				  hidden md:block
 				  absolute left-0 right-0 top-0
 				  h-[180px]
 				  z-10
