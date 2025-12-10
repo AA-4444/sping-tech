@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
 
 import ImagePreviewModal from "@/components/ImagePreviewModal";
+import { useLeadForm } from "@/components/LeadFormProvider";
 
 import case1Img from "@/assets/preview.png";
 import previewImg from "@/assets/preview.png";
@@ -36,11 +37,16 @@ const platformCases: PlatformCase[] = [
 type PlatformCardProps = {
   data: PlatformCase;
   onPreview: (src: string) => void;
+  onRequestCaseStudy: () => void;
 };
 
-const PlatformCard = ({ data: p, onPreview }: PlatformCardProps) => (
+const PlatformCard = ({
+  data: p,
+  onPreview,
+  onRequestCaseStudy,
+}: PlatformCardProps) => (
   <article className="relative flex flex-col overflow-hidden rounded-3xl border border-border/70 bg-card/95 shadow-[0_18px_45px_rgba(0,0,0,0.7)]">
-	{/* фон-скриншот, кликабельный — открывает большой preview */}
+	{/* Скриншот платформы */}
 	<div
 	  className="relative h-44 sm:h-48 cursor-pointer"
 	  onClick={() => onPreview(previewImg)}
@@ -52,21 +58,16 @@ const PlatformCard = ({ data: p, onPreview }: PlatformCardProps) => (
 	  />
 	  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/5" />
 
-	  {/* псевдо-логотип / чип */}
-	  <div className="absolute bottom-4 left-4 flex items-center gap-3">
-		<div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/50 bg-[radial-gradient(circle_at_30%_0%,rgba(250,204,21,0.35),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(250,204,21,0.16),transparent_60%)] shadow-[0_0_25px_rgba(250,204,21,0.25)]">
-		  <span className="text-sm font-semibold text-primary">{`C${p.id}`}</span>
-		</div>
-		<div>
-		  <p className="text-[10px] uppercase tracking-[0.24em] text-primary/70">
-			Case study
-		  </p>
-		  <h3 className="text-xs sm:text-sm font-semibold">{p.codename}</h3>
-		</div>
+	  {/* Без квадрата C1, только текст */}
+	  <div className="absolute bottom-4 left-4">
+		<p className="text-[10px] uppercase tracking-[0.24em] text-primary/70">
+		  Case study
+		</p>
+		<h3 className="text-xs sm:text-sm font-semibold">{p.codename}</h3>
 	  </div>
 	</div>
 
-	{/* контент */}
+	{/* Контент */}
 	<div className="flex-1 p-5 sm:p-6 space-y-4">
 	  <div className="flex flex-wrap gap-2 text-[11px] text-muted-foreground">
 		<span className="rounded-full border border-border/70 px-3 py-1 bg-background/60">
@@ -87,12 +88,11 @@ const PlatformCard = ({ data: p, onPreview }: PlatformCardProps) => (
 		</p>
 	  </div>
 
+	  {/* Кнопка → открывает lead форму */}
 	  <button
 		type="button"
 		className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-		onClick={() => {
-		  window.location.href = "/contact";
-		}}
+		onClick={onRequestCaseStudy}
 	  >
 		Request full case study
 		<ArrowRight className="h-3.5 w-3.5" />
@@ -104,6 +104,8 @@ const PlatformCard = ({ data: p, onPreview }: PlatformCardProps) => (
 const PlatformsShowcasePage = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewSrc, setPreviewSrc] = useState<string>("");
+
+  const { openLeadForm } = useLeadForm(); // 👈 тот же хук, что ты уже используешь в Navigation / Hero
 
   const openPreview = (src: string) => {
 	setPreviewSrc(src);
@@ -149,11 +151,11 @@ const PlatformsShowcasePage = () => {
 				  key={item.id}
 				  data={item}
 				  onPreview={openPreview}
+				  onRequestCaseStudy={openLeadForm} // 👈 сюда передаём openLeadForm
 				/>
 			  ))}
 			</div>
 
-			{/* NDA дисклеймер */}
 			<p className="mt-10 text-xs sm:text-[13px] text-muted-foreground max-w-3xl">
 			  Brand names, logos, domains and parts of the interface are
 			  intentionally hidden or restyled under non-disclosure agreements.
@@ -166,7 +168,6 @@ const PlatformsShowcasePage = () => {
 
 	  <Footer />
 
-	  {/* Модалка предпросмотра платформы */}
 	  <ImagePreviewModal
 		src={previewSrc}
 		isOpen={previewOpen}

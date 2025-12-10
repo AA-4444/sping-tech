@@ -3,17 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "@/components/NavLink";
-
+import { useLeadForm } from "@/components/LeadFormProvider"; // ⬅️ ВАЖНО
 import logo from "@/assets/sping-logo.png";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openLeadForm } = useLeadForm(); // ⬅️ подключаем модалку
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent"> 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
           
           <NavLink to="/" className="flex items-center gap-3">
             <img
@@ -25,7 +25,8 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            {/* PLATFORM DROPDOWN – DESKTOP */}
+
+            {/* PLATFORM DROPDOWN */}
             <div className="relative group">
               <button className="flex items-center gap-1 text-foreground/80 hover:text-primary transition-colors">
                 Platform
@@ -36,7 +37,6 @@ const Navigation = () => {
                 <NavLink
                   to="/platforms"
                   className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-t-xl"
-                  activeClassName="text-primary font-semibold"
                 >
                   Platform
                 </NavLink>
@@ -44,7 +44,6 @@ const Navigation = () => {
                 <NavLink
                   to="/casino"
                   className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-primary/10"
-                  activeClassName="text-primary font-semibold"
                 >
                   Casino
                 </NavLink>
@@ -52,38 +51,22 @@ const Navigation = () => {
                 <NavLink
                   to="/crm"
                   className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-b-xl"
-                  activeClassName="text-primary font-semibold"
                 >
                   CRM
                 </NavLink>
               </div>
             </div>
 
-            <NavLink
-              to="/blog"
-              className="text-foreground/80 hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-            >
-              Blog
-            </NavLink>
+            {/* SIMPLE LINKS */}
+            <NavLink to="/blog" className="text-foreground/80 hover:text-primary">Blog</NavLink>
+            <NavLink to="/team" className="text-foreground/80 hover:text-primary">Team</NavLink>
+            <NavLink to="/about" className="text-foreground/80 hover:text-primary">About</NavLink>
 
-            <NavLink
-              to="/team"
-              className="text-foreground/80 hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
+            {/* CTA BUTTON */}
+            <Button
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              onClick={openLeadForm} // ⬅️ открываем lead form
             >
-              Team
-            </NavLink>
-
-            <NavLink
-              to="/about"
-              className="text-foreground/80 hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-            >
-              About
-            </NavLink>
-
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
               LET'S PARTNER UP
             </Button>
           </div>
@@ -99,86 +82,55 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div
-            className="
-              md:hidden mt-2 mb-4 
-              rounded-2xl border border-border 
-              bg-background/80 backdrop-blur-xl 
-              shadow-xl py-4 px-4 
-              space-y-2 animate-fade-in
-            "
-          >
-            {/*  DROPDOWN */}
-            <div className="space-y-1">
-              <details className="group">
-                <summary className="cursor-pointer py-2 flex items-center justify-between text-foreground/80 hover:text-primary">
-                  <span>Platform</span>
-                  <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform" />
-                </summary>
+          <div className="
+            md:hidden mt-2 mb-4 
+            rounded-2xl border border-border 
+            bg-background/80 backdrop-blur-xl 
+            shadow-xl py-4 px-4 
+            space-y-2 animate-fade-in
+          ">
+            <details className="group">
+              <summary className="cursor-pointer py-2 flex items-center justify-between text-foreground/80 hover:text-primary">
+                <span>Platform</span>
+                <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform" />
+              </summary>
 
-                <div className="pl-2 mt-1 space-y-1">
-                  <NavLink
-                    to="/platforms"
-                    className="block py-2 text-foreground/70 hover:text-primary transition-colors"
-                    activeClassName="text-primary font-semibold"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Platform
-                  </NavLink>
+              <div className="pl-2 mt-1 space-y-1">
+                <NavLink to="/platforms" className="block py-2 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>
+                  Platform
+                </NavLink>
 
-                  <NavLink
-                    to="/casino"
-                    className="block py-2 text-foreground/70 hover:text-primary transition-colors"
-                    activeClassName="text-primary font-semibold"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Casino
-                  </NavLink>
+                <NavLink to="/casino" className="block py-2 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>
+                  Casino
+                </NavLink>
 
-                  <NavLink
-                    to="/crm"
-                    className="block py-2 text-foreground/70 hover:text-primary transition-colors"
-                    activeClassName="text-primary font-semibold"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    CRM
-                  </NavLink>
-                </div>
-              </details>
-            </div>
+                <NavLink to="/crm" className="block py-2 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>
+                  CRM
+                </NavLink>
+              </div>
+            </details>
 
-            <NavLink
-              to="/blog"
-              className="block py-2 text-foreground/80 hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <NavLink to="/blog" className="block py-2 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>
               Blog
             </NavLink>
 
-            <NavLink
-              to="/team"
-              className="block py-2 text-foreground/80 hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <NavLink to="/team" className="block py-2 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>
               Team
             </NavLink>
 
-            <NavLink
-              to="/about"
-              className="block py-2 text-foreground/80 hover:text-primary transition-colors"
-              activeClassName="text-primary font-semibold"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <NavLink to="/about" className="block py-2 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>
               About
             </NavLink>
 
+            {/* MOBILE CTA */}
             <Button
               className="w-full mt-2 bg-primary hover:bg-primary/90 text-primary-foreground"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openLeadForm(); // ⬅️ тоже открывает lead form
+              }}
             >
-             LET'S PARTNER UP
+              LET'S PARTNER UP
             </Button>
           </div>
         )}
