@@ -55,11 +55,10 @@ export const LeadFormProvider = ({ children }: { children: ReactNode }) => {
 
 	  setSent(true);
 	  form.reset();
-	  // если хочешь сразу закрывать:
-	  // closeLeadForm();
+	  
 	} catch (err) {
 	  console.error("Lead form error", err);
-	  // тут можно повесить тост/алерт об ошибке
+	  
 	} finally {
 	  setIsSubmitting(false);
 	}
@@ -136,7 +135,7 @@ export const LeadFormProvider = ({ children }: { children: ReactNode }) => {
 					name="message"
 					rows={4}
 					className="w-full rounded-xl bg-secondary border border-border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary resize-none"
-					placeholder="Casino / sportsbook / platform needs, timelines, markets..."
+					placeholder="Casino / sportsbook / platform needs, timelines, markets, websites..."
 				  />
 				</div>
 

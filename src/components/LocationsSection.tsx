@@ -13,21 +13,21 @@ const locations: LocationInfo[] = [
   {
 	city: "Limassol",
 	country: "Cyprus",
-	address: "Contact us",
+	address: "Agiou Andreou 365, Limassol",
 	lat: 34.7071,
 	lng: 33.0226,
   },
   {
 	city: "Warszawa",
 	country: "Poland",
-	address: "Contact us",
+	address: "Aleje Jerozolimskie 93, Warsaw",
 	lat: 52.2297,
 	lng: 21.0122,
   },
   {
 	city: "Miami",
 	country: "USA",
-	address: "-",
+	address: "2801 NE 183rd Street, FL 33160, Miami",
 	lat: 25.7617,
 	lng: -80.1918,
   },
@@ -36,14 +36,12 @@ const locations: LocationInfo[] = [
 const LocationsSection = () => {
   return (
 	<section className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden border-t border-border/60">
-	  {/* мягкий фон */}
 	  <div className="pointer-events-none absolute inset-0 opacity-40">
 		<div className="absolute -top-24 left-0 w-72 h-72 rounded-full bg-primary/15 blur-3xl" />
 		<div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-gold/12 blur-3xl" />
 	  </div>
 
 	  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-		{/* заголовок */}
 		<div className="max-w-3xl mb-8 sm:mb-10">
 		  <p className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-4 py-1 text-xs sm:text-sm uppercase tracking-[0.25em] text-primary">
 			Locations
@@ -59,7 +57,6 @@ const LocationsSection = () => {
 		  </p>
 		</div>
 
-		{/* Планета + карточки */}
 		<div className="relative max-w-6xl mx-auto">
 		  <div className="relative mt-4 sm:mt-6">
 			<GlobeScene
@@ -70,13 +67,8 @@ const LocationsSection = () => {
 			/>
 		  </div>
 
-		  {/* Карточки */}
 		  <div className="pointer-events-none absolute inset-x-4 sm:inset-x-6 -bottom-14 sm:-bottom-16">
 			<div className="pointer-events-auto">
-			  {/* 
-				На мобиле: горизонтальный скролл
-				На md+: обычная сетка 3 колонки
-			  */}
 			  <div
 				className="
 				  flex md:grid md:grid-cols-3
@@ -90,10 +82,10 @@ const LocationsSection = () => {
 					key={loc.city}
 					className="
 					  rounded-2xl
-					  border border-primary/40     
-					  bg-background/95 
+					  border border-primary/40
+					  bg-background/95
 					  backdrop-blur-sm
-					  px-6 py-6 sm:px-7 sm:py-7 
+					  px-6 py-6 sm:px-7 sm:py-7
 					  shadow-[0_18px_45px_rgba(0,0,0,0.65)]
 					  min-h-[150px] sm:min-h-[170px]
 					  min-w-[240px] sm:min-w-[260px] md:min-w-0
@@ -119,7 +111,6 @@ const LocationsSection = () => {
 		  </div>
 		</div>
 
-		{/* отступ под карточки */}
 		<div className="h-32 sm:h-36 lg:h-40" />
 	  </div>
 	</section>
