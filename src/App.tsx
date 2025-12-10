@@ -19,6 +19,8 @@ import CrmPlatform from "./pages/CrmPlatform";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy";
 import CookiesPolicyPage from "./pages/CookiesPolicy";
 
+import CareersPage from "./pages/CareersPage";
+import EventsPage from "./pages/EventsPage";
 import { LeadFormProvider } from "@/components/LeadFormProvider";
 
 const queryClient = new QueryClient();
@@ -48,6 +50,8 @@ const App = () => (
             <Route path="/crm" element={<CrmPlatform />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/cookies" element={<CookiesPolicyPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/events" element={<EventsPage />} />
 
             {/* CATCH-ALL */}
             <Route path="*" element={<NotFound />} />

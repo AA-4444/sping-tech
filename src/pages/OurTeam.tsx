@@ -73,21 +73,21 @@ const contacts: Teammate[] = [
 	id: 1,
 	name: "General inquiries",
 	role: "Reach out for anything related to the platform or potential collaboration.",
-	email: "client@sping.tech",
+	email: "trgtart.office@gmail.com",
 	avatarUrl: spingLogo,        
   },
   {
 	id: 2,
 	name: "Sales & Partnerships",
 	role: "Platform deals, custom modules, white-label and revenue share models.",
-	email: "client@sping.tech",
+	email: "Vaso.berulava.work@gmail.com",
 	avatarUrl: spingLogo,    
   },
   {
 	id: 3,
 	name: "Alina Dianova",
 	role: "USA Miami represantative",
-	email: "@dianovafilmdirector",
+	email: "trgtart.office@gmail.com",
 	avatarUrl: alina,        
   },
 ];
@@ -208,7 +208,7 @@ const OurTeamPage = () => {
 				))}
 			  </div>
 
-			  {/* стрелки поверх для мобильных (снизу по центру) */}
+			 
 			  <div className="sm:hidden mt-2 flex justify-center gap-3">
 				<button
 				  type="button"

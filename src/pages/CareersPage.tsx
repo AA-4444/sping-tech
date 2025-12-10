@@ -1,7 +1,8 @@
 // src/pages/CareersPage.tsx
+import { useState, FormEvent } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const jobs = [
@@ -78,13 +79,46 @@ const jobs = [
 ];
 
 const CareersPage = () => {
+  const [activeJobTitle, setActiveJobTitle] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formMessage, setFormMessage] = useState("");
+
+  const openForm = (jobTitle: string) => {
+	setActiveJobTitle(jobTitle);
+	setFormName("");
+	setFormEmail("");
+	setFormMessage("");
+	setIsModalOpen(true);
+  };
+
+  const closeForm = () => {
+	setIsModalOpen(false);
+	setActiveJobTitle(null);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+	e.preventDefault();
+
+	// здесь можно будет подвязать отправку на бекенд / почту
+	console.log("Job application:", {
+	  position: activeJobTitle,
+	  name: formName,
+	  email: formEmail,
+	  message: formMessage,
+	});
+
+	closeForm();
+  };
+
   return (
 	<div className="min-h-screen bg-background text-foreground">
 	  <Navigation />
 
 	  <main className="pt-28 pb-20">
 		<section className="container mx-auto px-4 sm:px-6 lg:px-8">
-		  
 		  <div className="max-w-3xl mb-12">
 			<h1 className="text-4xl sm:text-5xl font-bold">
 			  Careers at <span className="text-primary">Sping.tech</span>
@@ -110,6 +144,7 @@ const CareersPage = () => {
 
 				<Button
 				  className="mt-6 w-full bg-primary text-primary-foreground hover:bg-primary/90"
+				  onClick={() => openForm(job.title)}
 				>
 				  Apply Now
 				  <ArrowRight className="ml-2 h-4 w-4" />
@@ -121,6 +156,66 @@ const CareersPage = () => {
 	  </main>
 
 	  <Footer />
+
+	  {isModalOpen && activeJobTitle && (
+		<div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-md px-4">
+		  <div className="relative w-full max-w-lg rounded-2xl border border-border bg-card shadow-[0_18px_55px_rgba(0,0,0,0.85)] p-6 sm:p-7">
+			<button
+			  onClick={closeForm}
+			  className="absolute right-4 top-4 text-muted-foreground hover:text-foreground transition-colors"
+			>
+			  <X className="h-5 w-5" />
+			</button>
+
+			<h2 className="text-2xl font-bold">
+			  Apply for <span className="text-primary">{activeJobTitle}</span>
+			</h2>
+			<p className="text-sm text-muted-foreground mt-2">
+			  Share a few details about yourself and we’ll get back to you.
+			</p>
+
+			<form onSubmit={handleSubmit} className="mt-6 space-y-4">
+			  <div>
+				<label className="block text-sm mb-1">Full name</label>
+				<input
+				  required
+				  value={formName}
+				  onChange={(e) => setFormName(e.target.value)}
+				  className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+				/>
+			  </div>
+
+			  <div>
+				<label className="block text-sm mb-1">Email</label>
+				<input
+				  required
+				  type="email"
+				  value={formEmail}
+				  onChange={(e) => setFormEmail(e.target.value)}
+				  className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+				/>
+			  </div>
+
+			  <div>
+				<label className="block text-sm mb-1">Message / Cover letter</label>
+				<textarea
+				  required
+				  value={formMessage}
+				  onChange={(e) => setFormMessage(e.target.value)}
+				  className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary min-h-[120px]"
+				/>
+			  </div>
+
+			  <Button
+				type="submit"
+				className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+			  >
+				Submit application
+			  </Button>
+			</form>
+		  </div>
+		</div>
+	  )}
 	</div>
   );
 };

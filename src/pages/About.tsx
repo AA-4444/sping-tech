@@ -252,11 +252,11 @@ const AboutPage = () => {
 	</section>
 
 		
-		{/* HOW WE WORK / TIMELINE */}
+		{/* HOW WE WORK  */}
 		<section className="py-16 sm:py-20 lg:py-24 bg-secondary/5">
 		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 			<div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
-			  {/* ЛЕВАЯ ЧАСТЬ */}
+			
 			  <div className="space-y-3">
 				<h2 className="text-2xl sm:text-3xl font-bold">
 				  A focused way of{" "}
@@ -268,7 +268,7 @@ const AboutPage = () => {
 				</p>
 			  </div>
 		
-			  {/* ПРАВАЯ ЧАСТЬ — ТАЙМЛАЙН КАК В ПРИМЕРЕ */}
+			  
 			  <div>
 				<ol className="relative border-s border-border/70 ps-6 space-y-8 sm:space-y-10">
 				  {/* STEP 1 */}
