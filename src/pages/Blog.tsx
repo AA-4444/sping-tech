@@ -118,7 +118,7 @@ const ArticleCard = ({ post, variant = "default", className }: ArticleCardProps)
 		className,
 	  )}
 	>
-	  {/* картинка / градиент */}
+	  
 	  <div className={cn("relative overflow-hidden", isFeatured ? "h-64 sm:h-80" : "h-52")}>
 		{post.imageUrl ? (
 		  <div
