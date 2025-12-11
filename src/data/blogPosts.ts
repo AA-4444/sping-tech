@@ -3,6 +3,7 @@
 import noKycImg from "@/assets/blog1.png";
 import fastPayoutImg from "@/assets/blog2.png";
 import bestCasinosImg from "@/assets/blog3.png";
+import build from "@/assets/build.png";
 
 export type BlogCategory = "all" | "articles" | "platform-updates" | "news";
 
@@ -37,7 +38,7 @@ export const blogPosts: BlogPost[] = [
 	readTime: "8 min read",
 	date: "January 2025",
 	featured: true,
-	imageUrl: noKycImg, // можешь поставить сюда картинку-обложку, если будет
+	imageUrl: noKycImg, 
 	content: [
 	  "Online gambling is changing fast. Players no longer want slow payouts, endless verification steps, or limited payment methods. Instead, the 2025 trend is clear: instant deposits, crypto payments, low fees, and no-KYC onboarding.",
 	  "In this review, we highlight the key factors that make an online casino worth your time — and why Aereus.bet stands out as one of the fastest-growing no-KYC crypto casinos this year.",
@@ -219,6 +220,110 @@ export const blogPosts: BlogPost[] = [
 
 	  "Fast payout casinos are redefining online gambling in 2025. Instant withdrawals, no delays and crypto support make the experience smoother than ever.",
 	  "If you’re looking for a trusted fast withdrawal casino, Aereus.bet is one of the strongest recommendations — especially for instant payouts in USDT and BTC."
+	]
+  },
+  {
+	id: 4,
+	slug: "igaming-platform-packages-build-launch-scale-2025",
+	title: "Build. Launch. Scale. iGaming 2025 — The Complete iGaming Platform Packages for Casino Operators",
+	tag: "PLATFORM UPDATE",
+	category: "platform-updates",
+	excerpt:
+	  "iGaming в 2025 году растёт рекордными темпами. Операторы ищут быстрые, надёжные и масштабируемые платформы. Sping.tech предлагает пять полных пакетов разработки казино — от MVP до enterprise-решений.",
+	author: "Sping.tech Editorial Team",
+	readTime: "10 min read",
+	date: "January 2025",
+	featured: false,
+	imageUrl: build, 
+	content: [
+	  "The iGaming market is growing at record speed, and operators are looking for fast, reliable, and scalable solutions that allow them to launch online casinos, enter new GEOs, reduce costs, and stay compliant across regulated and emerging markets.",
+	  "At Sping.tech, we deliver full-cycle iGaming platform engineering, custom casino development, and advanced R&D services designed for operators who want real ownership, performance, and innovation — not just another white-label clone.",
+	  "Below is a clear breakdown of our five service packages, their cost, and why they help operators stay ahead in a competitive global iGaming ecosystem.",
+  
+	  "**1. Casino Core MVP — Launch Your Casino Fast With Full Platform Ownership**",
+	  "For startups, crypto casinos, and operators entering new GEOs.",
+	  "Includes:",
+	  "• PAM (Player Account Management)",
+	  "• Crypto Wallet (USDT, BTC, ETH, TON)",
+	  "• 10–20 game provider integrations",
+	  "• Basic bonus system",
+	  "• Admin panel & reporting",
+	  "• Fraud protection",
+	  "• Custom frontend (React/Next.js)",
+	  "• Full deployment + 30 days support",
+	  "Launch time: 6–10 weeks",
+	  "Price: €25,000 – €45,000",
+	  "Why choose it: Perfect for validating your market, scaling traffic fast, and avoiding vendor lock-in from traditional white-label providers.",
+  
+	  "**2. Growing Casino Platform — Boost Revenue With Advanced Features**",
+	  "For operators ready to expand across multiple markets.",
+	  "Includes:",
+	  "• Advanced PAM + modular APIs",
+	  "• Multi-currency wallet (fiat + crypto)",
+	  "• 30–100+ game providers",
+	  "• Advanced bonus engine & retention features",
+	  "• Tournament engine",
+	  "• Fraud & risk engine",
+	  "• AI-driven content personalization",
+	  "• Mobile-first custom frontend",
+	  "• 60-day SLA support",
+	  "Launch time: 10–16 weeks",
+	  "Price: €60,000 – €120,000",
+	  "Why choose it: This package increases player retention, loyalty, and LTV — the three pillars of long-term casino profitability.",
+  
+	  "**3. Full Enterprise iGaming Platform — Global-Scale Architecture**",
+	  "For regulated operators, multi-brand groups, and enterprise iGaming companies.",
+	  "Includes:",
+	  "• Enterprise platform architecture (HA, auto-scaling)",
+	  "• Full PAM + Risk Engine 2.0",
+	  "• Multi-brand management (up to 20 brands)",
+	  "• KYC/AML integrations (Sumsub, GetID, HooYu)",
+	  "• PSP Hub (fiat + crypto payments)",
+	  "• 2,000–8,000 games",
+	  "• Real-time analytics & data pipelines (Kafka, ClickHouse)",
+	  "• VIP management, affiliate management",
+	  "• Mobile apps (iOS/Android)",
+	  "• 90-day SLA support",
+	  "Launch time: 4–6 months",
+	  "Price: €150,000 – €400,000+",
+	  "Why choose it: Enterprise-grade scalability, compliance, and performance for operators targeting Europe, MENA, Asia, LATAM, and licensed markets.",
+  
+	  "**4. iGaming R&D Innovation Lab — Exclusive Games & Continuous Product Growth**",
+	  "For operators seeking differentiation and innovation.",
+	  "Includes:",
+	  "• Custom crash games & instant games",
+	  "• A/B experiments & UX optimization",
+	  "• Behavioural models & risk algorithms",
+	  "• On-chain game mechanics",
+	  "• Internal tools & automation",
+	  "• Dedicated engineering team (1–5 R&D specialists)",
+	  "Price: €12,000 – €35,000 per month",
+	  "Why choose it: This is how operators build exclusive features that increase retention and outperform generic competitor platforms.",
+  
+	  "**5. Migration & Rescue Package — Move Away From White-Label Platforms**",
+	  "For operators stuck on limited platforms like SoftSwiss, Pragmatic Solutions, or BetConstruct.",
+	  "Includes:",
+	  "• Technology audit",
+	  "• Migration strategy & API bridges",
+	  "• Player balance + transaction migration",
+	  "• Zero-downtime switch-over",
+	  "• Load testing",
+	  "• 24/7 migration support",
+	  "Price: €40,000 – €120,000",
+	  "Why choose it: You gain full ownership, lower operational costs, and the freedom to scale without limitations.",
+  
+	  "Why operators choose Sping.tech:",
+	  "• Real platform engineering, not templates",
+	  "• Full ownership of codebase",
+	  "• Zero vendor lock-in",
+	  "• Crypto-native architecture",
+	  "• Scalable infrastructure for long-term growth",
+	  "• Ideal for regulated & emerging GEOs",
+	  "• Enterprise-grade support & SLAs",
+	  "Our clients include crypto casinos, iGaming startups, enterprise operators, affiliate groups, and international brands entering new markets.",
+  
+	  "📩 Ready to launch or scale your iGaming platform?",
+	  "👉 Fill out the Lead Form — and our team will contact you with pricing, timelines, and a tailored strategy for your target markets."
 	]
   }
 
