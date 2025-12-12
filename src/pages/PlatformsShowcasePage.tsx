@@ -10,29 +10,31 @@ import { useLeadForm } from "@/components/LeadFormProvider";
 import case1Img from "@/assets/preview.png";
 import previewImg from "@/assets/preview.png";
 
+/* ================= TYPES ================= */
+
 type PlatformCase = {
   id: number;
   codename: string;
   type: string;
-  region: string;
-  scale: string;
   role: string;
   stack: string;
   image: string;
 };
+
+/* ================= DATA ================= */
 
 const platformCases: PlatformCase[] = [
   {
 	id: 1,
 	codename: "Tier-1 Casino · Europe",
 	type: "Casino platform",
-	region: "EU regulated markets",
-	scale: "1M+ monthly active players",
 	role: "Full platform build & migration from legacy vendor",
 	stack: "Casino engine, PAM, payments, risk & bonus tools",
 	image: case1Img,
   },
 ];
+
+/* ================= CARD ================= */
 
 type PlatformCardProps = {
   data: PlatformCase;
@@ -46,7 +48,7 @@ const PlatformCard = ({
   onRequestCaseStudy,
 }: PlatformCardProps) => (
   <article className="relative flex flex-col overflow-hidden rounded-3xl border border-border/70 bg-card/95 shadow-[0_18px_45px_rgba(0,0,0,0.7)]">
-	{/* Скриншот платформы */}
+	{/* Screenshot */}
 	<div
 	  className="relative h-44 sm:h-48 cursor-pointer"
 	  onClick={() => onPreview(previewImg)}
@@ -58,7 +60,6 @@ const PlatformCard = ({
 	  />
 	  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/5" />
 
-	  {/* Без квадрата C1, только текст */}
 	  <div className="absolute bottom-4 left-4">
 		<p className="text-[10px] uppercase tracking-[0.24em] text-primary/70">
 		  Case study
@@ -67,28 +68,19 @@ const PlatformCard = ({
 	  </div>
 	</div>
 
-	{/* Контент */}
+	{/* Content */}
 	<div className="flex-1 p-5 sm:p-6 space-y-4">
 	  <div className="flex flex-wrap gap-2 text-[11px] text-muted-foreground">
 		<span className="rounded-full border border-border/70 px-3 py-1 bg-background/60">
 		  {p.type}
 		</span>
-		<span className="rounded-full border border-border/70 px-3 py-1 bg-background/60">
-		  {p.region}
-		</span>
-		<span className="rounded-full border border-primary/40 px-3 py-1 bg-primary/5 text-primary">
-		  {p.scale}
-		</span>
 	  </div>
 
 	  <div className="space-y-1.5 text-sm text-muted-foreground">
 		<p className="text-foreground/90">{p.role}</p>
-		<p className="text-xs sm:text-[13px] text-muted-foreground">
-		  {p.stack}
-		</p>
+		<p className="text-xs sm:text-[13px]">{p.stack}</p>
 	  </div>
 
-	  {/* Кнопка → открывает lead форму */}
 	  <button
 		type="button"
 		className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
@@ -101,11 +93,13 @@ const PlatformCard = ({
   </article>
 );
 
+/* ================= PAGE ================= */
+
 const PlatformsShowcasePage = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewSrc, setPreviewSrc] = useState<string>("");
+  const [previewSrc, setPreviewSrc] = useState("");
 
-  const { openLeadForm } = useLeadForm(); // 👈 тот же хук, что ты уже используешь в Navigation / Hero
+  const { openLeadForm } = useLeadForm();
 
   const openPreview = (src: string) => {
 	setPreviewSrc(src);
@@ -129,20 +123,22 @@ const PlatformsShowcasePage = () => {
 			  <p className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-4 py-1 text-[11px] sm:text-xs uppercase tracking-[0.25em] text-primary">
 				Platforms
 			  </p>
+
 			  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
 				Selected{" "}
 				<span className="text-primary">platforms we’ve built</span>
 			  </h1>
+
 			  <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
 				We design, build and operate full casino, sportsbook and crypto
 				platforms. Client brands and visual identities are anonymised
-				due to NDA — but the scale, stack and results are real.
+				due to NDA — but the architecture and scope are real.
 			  </p>
 			</div>
 		  </div>
 		</section>
 
-		{/* GRID С КЕЙСАМИ */}
+		{/* GRID */}
 		<section className="py-12 sm:py-16 lg:py-20">
 		  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 			<div className="grid gap-6 md:gap-8 md:grid-cols-2 xl:grid-cols-3">
@@ -151,16 +147,15 @@ const PlatformsShowcasePage = () => {
 				  key={item.id}
 				  data={item}
 				  onPreview={openPreview}
-				  onRequestCaseStudy={openLeadForm} // 👈 сюда передаём openLeadForm
+				  onRequestCaseStudy={openLeadForm}
 				/>
 			  ))}
 			</div>
 
 			<p className="mt-10 text-xs sm:text-[13px] text-muted-foreground max-w-3xl">
 			  Brand names, logos, domains and parts of the interface are
-			  intentionally hidden or restyled under non-disclosure agreements.
-			  For a deep dive into specific cases, reach out to our team and we
-			  can share details under NDA.
+			  intentionally hidden under non-disclosure agreements. Detailed
+			  technical case studies are available on request.
 			</p>
 		  </div>
 		</section>
